@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form action="/generateToken" method="POST" id="loginFrm">
+        id : <input type="text" name="mid" id="mid" size="10"/>
+        pw : <input type="text" name="mpw" id="mpw" size="10"/>
+        <input type="button" value="login" onclick="apiLogin()"/>
+    </form>
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    function apiLogin(){
+        const _mid = document.getElementById("mid").value
+        const _mpw = document.getElementById("mpw").value
+
+        const data = {mid:_mid, mpw:_mpw}
+
+        axios.post("http://localhost:8080/generateToken",data)
+    }
+
+</script>
+</body>
+</html>
