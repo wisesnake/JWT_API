@@ -39,7 +39,6 @@ public class CustomSecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
-
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
         log.info("---------------web config--------------");
@@ -58,14 +57,12 @@ public class CustomSecurityConfig {
                 http.getSharedObject(AuthenticationManagerBuilder.class);
         //ㄴ Allows for easily building in memory authentication, LDAP authentication, JDBC based authentication, adding UserDetailsService, and adding AuthenticationProvider's.
 
-
         authenticationManagerBuilder
                 .userDetailsService(apiUserDetailsService)
                 .passwordEncoder(passwordEncoder());
 
         //Get AuthenticationManager
         AuthenticationManager authenticationManager = authenticationManagerBuilder.build();
-
 
         //반드시 필요
         http.authenticationManager(authenticationManager);
@@ -84,7 +81,6 @@ public class CustomSecurityConfig {
 
         //APILoginFilter를 /generateToken이라는 경로로 지정하였고, 스프링 시큐리티에서
         //username 과 password를 처리하는 UserNamePasswordAuthenticationFilter 의 앞에서 동작하도록 설정
-
 
         http.csrf().disable();
 
